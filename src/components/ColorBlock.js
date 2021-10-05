@@ -1,4 +1,3 @@
-import randomColor from "randomcolor";
 import "../App.css";
 import styled from "styled-components";
 
@@ -6,15 +5,14 @@ const ColoredBlock = styled.div`
   flex: 1;
   height: 100%;
   width: 100%;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props["color"]};
 `;
 
-const ColorBlock = () => {
-  const randomizedColor = randomColor();
-
+const ColorBlock = (props) => {
+  console.log(props);
   return (
-    <ColoredBlock color={randomizedColor}>
-      <h2>{randomizedColor}</h2>
+    <ColoredBlock color={props["color"]}>
+      <h4>{props.color}</h4>
     </ColoredBlock>
   );
 };

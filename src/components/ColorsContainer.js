@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { ColorContext } from "../context/ColorContext";
 import ColorBlock from "./ColorBlock";
+
 const ColorsContainered = styled.div`
   display: flex;
   width: 100%;
@@ -7,11 +10,13 @@ const ColorsContainered = styled.div`
 `;
 
 const ColorsContainer = () => {
+  const { colors } = useContext(ColorContext);
+
   return (
     <ColorsContainered>
-      <ColorBlock />
-      <ColorBlock />
-      <ColorBlock />
+      {colors.map((randomColor, index) => {
+        return <ColorBlock key={index} color={randomColor} />;
+      })}
     </ColorsContainered>
   );
 };
